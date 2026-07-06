@@ -1,6 +1,6 @@
 # Battery State-of-Charge Estimation using a Bias-Augmented Extended Kalman Filter
 
-Estimating the State of Charge (SoC) of a lithium-ion cell in the presence of an **uncorrected current sensor bias**, comparing classical Coulomb Counting against a bias-augmented Extended Kalman Filter (EKF) implemented in MATLAB and Simulink.
+Estimating the State of Charge (SoC) of a lithium-ion cell in the presence of an **uncorrected current sensor bias**, comparing classical Coulomb Counting against a bias-augmented Extended Kalman Filter (EKF) implemented in MATLAB.
 
 ## Motivation
 
