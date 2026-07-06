@@ -39,14 +39,8 @@ battery-soc-estimation-ekf/
 ├── README.md
 ├── matlab/
 │   └── battery_ekf_main.m         # Full simulation: truth model, Coulomb Counting, bias-augmented EKF
-├── simulink/
-│   └── battery_truth_model.slx    # Simulink truth-model block diagram (SoC + Vt generation)
 ├── report/
 │   └── SoC_Estimation_Report.pdf  # Short technical report with results and discussion
-├── figures/
-│   ├── soc_comparison.png
-│   ├── soc_error.png
-│   └── bias_estimation.png
 ```
 
 ## How to Run
@@ -59,7 +53,6 @@ run('matlab/battery_ekf_main.m')
 
 This will simulate 3600 s of a dynamic discharge profile, run both estimators, and produce three comparison figures (SoC estimate, SoC error, current bias estimate).
 
-The Simulink model (`simulink/battery_truth_model.slx`) reproduces the ground-truth generation portion only (SoC and Vt from a given current input) as a block-diagram equivalent of the MATLAB truth model.
 
 ## Results
 
@@ -70,9 +63,6 @@ The Simulink model (`simulink/battery_truth_model.slx`) reproduces the ground-tr
 
 The EKF also recovers the injected current sensor bias (true value: 3.0 A), converging to approximately **2.5–2.7 A** within the first ~600–800 s and remaining in that band for the rest of the simulation.
 
-![SoC Comparison](figures/soc_comparison.png)
-![SoC Error](figures/soc_error.png)
-![Bias Estimation](figures/bias_estimation.png)
 
 ## Limitations
 
@@ -80,11 +70,6 @@ The EKF also recovers the injected current sensor bias (true value: 3.0 A), conv
 - The bias state is only weakly observable through the OCV-SoC slope, so the estimate does not converge exactly to the true 3.0 A value and retains some measurement-noise-driven ripple.
 - The OCV-SoC curve is a simple analytic approximation, not a fitted curve from real cell characterization data.
 
-## Future Work
-
-- Validate against a public real-cell dataset (e.g. NASA Battery Data Set).
-- Compare against an Unscented Kalman Filter (UKF) or particle filter.
-- Study observability/convergence sensitivity to current excitation richness and measurement noise level.
 
 ## Author
 
